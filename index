@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HRT Product Catalog — Kanna Pharmacy</title>
+  <style>
+    :root {
+      --purple:     #7C5CBF;
+      --purple-lt:  #A07DD6;
+      --purple-bg:  #F3EEFF;
+      --pink:       #C97DB5;
+      --pink-lt:    #F5D0EA;
+      --green:      #5BA08A;
+      --green-lt:   #D4EDE6;
+      --teal:       #4A8FA8;
+      --teal-lt:    #D0EAF4;
+      --orange:     #D4845A;
+      --orange-lt:  #FAE3D4;
+      --text:       #1E1B2E;
+      --text-muted: #6B6880;
+      --border:     #E2D9F3;
+      --card-bg:    #FFFFFF;
+      --bg:         #F9F7FF;
+      --radius:     12px;
+      --shadow:     0 2px 12px rgba(124,92,191,0.10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+                   "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      background: linear-gradient(135deg, #6B46C1 0%, #9B6DD6 50%, #C97DB5 100%);
+      color: #fff;
+      padding: 32px 20px 28px;
+      text-align: center;
+    }
+    .site-header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: .03em; }
+    .site-header p  { margin-top: 6px; font-size: .95rem; opacity: .88; }
+    .telegram-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      padding: 10px 22px;
+      background: rgba(255,255,255,0.2);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .telegram-btn:hover { background: rgba(255,255,255,0.32); }
+    .telegram-btn svg { width:18px; height:18px; fill:#fff; flex-shrink:0; }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+
+    /* ── Buying Process accordion ── */
+    .info-accordion {
+      margin-bottom: 28px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+    }
+    .info-accordion summary {
+      list-style: none;
+      padding: 16px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--purple);
+      user-select: none;
+    }
+    .info-accordion summary::-webkit-details-marker { display: none; }
+    .info-accordion summary::after {
+      content: "＋";
+      font-size: 1.2rem;
+      transition: transform .3s;
+    }
+    .info-accordion[open] summary::after { content: "－"; }
+    .info-accordion .accordion-body {
+      padding: 0 20px 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Flow grid ── */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 580px) { .flow-grid { grid-template-columns: 1fr; } }
+    .flow-card {
+      background: var(--purple-bg);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .flow-card h4 {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+    .flow-card ol {
+      padding-left: 18px;
+      font-size: .85rem;
+      color: var(--text-muted);
+    }
+    .flow-card ol li { margin-bottom: 4px; }
+
+    .shipping-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: .85rem;
+    }
+    .shipping-table th {
+      background: var(--purple-bg);
+      color: var(--purple);
+      font-weight: 700;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    .shipping-table td {
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .shipping-table tr:last-child td { border-bottom: none; }
+
+    .notice {
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: #FFF8EC;
+      border-left: 3px solid #F0A500;
+      border-radius: 6px;
+      font-size: .83rem;
+      color: #5A4200;
+    }
+
+    /* ── Category sections ── */
+    .category {
+      margin-bottom: 20px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1.5px solid var(--border);
+      background: var(--card-bg);
+    }
+    .category summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .category summary::-webkit-details-marker { display: none; }
+    .category summary .chevron {
+      margin-left: auto;
+      font-size: 1.1rem;
+      transition: transform .3s;
+      color: inherit;
+      opacity: .6;
+    }
+    .category[open] summary .chevron { transform: rotate(180deg); }
+
+    .cat-anti   summary { color: #5B3FA0; background: linear-gradient(90deg, #EDE5FF, #F9F7FF); }
+    .cat-estro  summary { color: #9B3A79; background: linear-gradient(90deg, #FFE9F6, #FFF7FD); }
+    .cat-other  summary { color: #2E7D6A; background: linear-gradient(90deg, #E2F4EF, #F7FDFB); }
+
+    .cat-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .cat-anti  .cat-icon { background: #DDD3FA; }
+    .cat-estro .cat-icon { background: #FADDF0; }
+    .cat-other .cat-icon { background: #C8EDE4; }
+
+    .cat-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .cat-meta span {
+      font-size: .78rem;
+      font-weight: 400;
+      opacity: .7;
+      margin-top: 2px;
+    }
+
+    /* ── Product grid ── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      padding: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Product card ── */
+    .card {
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+      background: #fff;
+      transition: transform .2s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(124,92,191,0.15);
+    }
+    .card-img-wrap {
+      position: relative;
+      height: 180px;
+      background: #F5F3FA;
+      overflow: hidden;
+    }
+    .card-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+    .card:hover .card-img-wrap img { transform: scale(1.04); }
+
+    .card-body {
+      padding: 14px 14px 10px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .card-ingredient {
+      font-size: .78rem;
+      color: var(--purple);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* badges */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    .badge {
+      font-size: .72rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .badge-origin  { background: var(--purple-bg); color: var(--purple); }
+    .badge-form    { background: var(--teal-lt);   color: var(--teal);   }
+    .badge-dose    { background: var(--orange-lt);  color: var(--orange); }
+    .badge-special { background: var(--green-lt);   color: var(--green);  }
+
+    .card-desc {
+      font-size: .82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .card-desc strong { color: var(--text); }
+
+    .card-footer {
+      padding: 10px 14px 12px;
+      border-top: 1px solid var(--border);
+    }
+    .buy-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 9px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 700;
+      transition: opacity .2s;
+    }
+    .buy-btn:hover { opacity: .85; }
+    .cat-anti  .buy-btn { background: linear-gradient(90deg,#7C5CBF,#9B6DD6); color:#fff; }
+    .cat-estro .buy-btn { background: linear-gradient(90deg,#C97DB5,#E09AD0); color:#fff; }
+    .cat-other .buy-btn { background: linear-gradient(90deg,#5BA08A,#7BBDAA); color:#fff; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: .8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+<header class="site-header">
+  <h1>🌸 HRT Product Catalog</h1>
+  <p>Kanna Pharmacy · Professional HRT Medications · Worldwide Shipping</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px;">
+    <a class="telegram-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+      Contact Support / Purchase Inquiry · @Kanna_Pharmacy
+    </a>
+    <a class="telegram-btn" href="https://t.me/proluton" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+      📢 Announcement Channel
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══════════════════════ BUYING PROCESS ═══════════════════════ -->
+  <details class="info-accordion" open>
+    <summary>📦 Ordering Process &amp; Shipping Info</summary>
+    <div class="accordion-body">
+      <div class="flow-grid">
+        <div class="flow-card">
+          <h4>🇨🇳 Domestic Ordering Process</h4>
+          <ol>
+            <li>Contact Telegram support</li>
+            <li>Tell us the medicines and quantities you need</li>
+            <li>Confirm pricing and payment method</li>
+            <li>Pay (USDT or Alipay)</li>
+            <li>Provide your shipping address</li>
+            <li>Wait for dispatch and track shipping</li>
+          </ol>
+        </div>
+        <div class="flow-card">
+          <h4>🌏 International Ordering Process</h4>
+          <ol>
+            <li>Contact Telegram support</li>
+            <li>Confirm destination country and medicines</li>
+            <li>Receive a quote (including shipping)</li>
+            <li>Pay (USDT or Alipay)</li>
+            <li>Provide your shipping address</li>
+            <li>Shipped by air cargo, track logistics</li>
+          </ol>
+        </div>
+      </div>
+
+      <table class="shipping-table">
+        <thead>
+          <tr><th>Destination</th><th>Estimated Shipping (CNY)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>China domestic forwarding warehouse</td><td>¥10</td></tr>
+          <tr><td>Macau / Taiwan</td><td>¥75</td></tr>
+          <tr><td>Malaysia / Singapore</td><td>¥100</td></tr>
+          <tr><td>South Korea / Japan</td><td>¥180</td></tr>
+          <tr><td>Most European countries</td><td>¥240</td></tr>
+          <tr><td>United States / Canada / Australia</td><td>¥280</td></tr>
+          <tr><td>Other countries</td><td>Contact support for a quote</td></tr>
+        </tbody>
+      </table>
+
+      <div class="notice">
+        ⚠️ Shipping cost depends on actual weight and parcel contents; prices above are estimates only.<br>
+        Payment methods: <strong>USDT or Alipay</strong>. All parcels are shipped under FCA (Free Carrier) terms; responsibility ends once handed to the carrier.
+      </div>
+    </div>
+  </details>
+
+  <!-- ═══════════════════════ ANTIANDROGENS ═══════════════════════ -->
+  <details class="category cat-anti" open>
+    <summary>
+      <div class="cat-icon">🛡️</div>
+      <div class="cat-meta">
+        Antiandrogen Medications
+        <span>Antiandrogens · 7 products</span>
+      </div>
+      <span class="chevron">▾</span>
+    </summary>
+
+    <div class="product-grid">
+
+      <!-- 100 Tan Box -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/100土色.jpg" alt="Cyproterone Acetate 100mg (Tan Box)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">100 Tan Box</div>
+          <div class="card-ingredient">Cyproterone Acetate</div>
+          <div class="badges">
+            <span class="badge badge-dose">100mg / tablet</span>
+            <span class="badge badge-form">Oral</span>
+            <span class="badge badge-origin">Made in Europe</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 3 blisters, 10 tablets each (30 tablets total).<br>
+            <strong>Recommended dose:</strong> 12.5mg/day (¼ tablet).<br>
+            Cyproterone acetate is one of the most commonly used antiandrogens in MTF HRT. It competitively blocks androgen receptors and suppresses gonadotropin secretion to effectively lower testosterone levels. European origin with stable quality.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- 100 NZ Box -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/100新色.jpg" alt="Cyproterone Acetate 100mg (New Zealand)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">100 NZ Box</div>
+          <div class="card-ingredient">Cyproterone Acetate</div>
+          <div class="badges">
+            <span class="badge badge-dose">100mg / tablet</span>
+            <span class="badge badge-form">Oral</span>
+            <span class="badge badge-origin">Made in New Zealand</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 5 blisters, 10 tablets each (50 tablets total).<br>
+            <strong>Recommended dose:</strong> 12.5mg/day (¼ tablet).<br>
+            New Zealand origin version with a larger and more economical package size. Contains the same cyproterone acetate, suitable for long-term use or stocking up.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- Tan Box -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/土色.jpg" alt="Cyproterone Acetate 100mg (Tan)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Tan Box</div>
+          <div class="card-ingredient">Cyproterone Acetate</div>
+          <div class="badges">
+            <span class="badge badge-dose">100mg / tablet</span>
+            <span class="badge badge-form">Oral</span>
+            <span class="badge badge-origin">Made in Europe</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 3 blisters, 10 tablets each (30 tablets total).<br>
+            <strong>Recommended dose:</strong> 12.5mg/day (¼ tablet).<br>
+            European import in older packaging, same ingredients as 100 Tan Box. More budget-friendly with equivalent effects.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- NZ Box -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/新色.jpg" alt="Cyproterone Acetate 50mg (New Zealand)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">NZ Box (50mg)</div>
+          <div class="card-ingredient">Cyproterone Acetate</div>
+          <div class="badges">
+            <span class="badge badge-dose">50mg / tablet</span>
+            <span class="badge badge-form">Oral</span>
+            <span class="badge badge-origin">Made in New Zealand</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 5 blisters, 10 tablets each (50 tablets total).<br>
+            <strong>Recommended dose:</strong> 12.5mg/day (¼ tablet), easy to split.<br>
+            The 50mg strength is easier for precise dose splitting, especially suitable for beginners or low-dose regimens.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- Cypro Injection -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/色针.jpg" alt="Cyproterone Acetate Injection 300mg (Bayer)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Cypro Shot (Injection)</div>
+          <div class="card-ingredient">Cyproterone Acetate Injection</div>
+          <div class="badges">
+            <span class="badge badge-dose">300mg / ampoule</span>
+            <span class="badge badge-form">Intramuscular injection</span>
+            <span class="badge badge-special">Long-acting · Monthly injection</span>
+          </div>
+          <p class="card-desc">
+            1 box includes 1 ampoule, 3ml/ampoule, containing 300mg cyproterone acetate.<br>
+            <strong>Manufacturer: Bayer</strong>.<br>
+            Long-acting injectable form, generally once per month, avoiding daily oral dosing with more stable blood levels. Suitable for users needing high adherence or who have unstable response to oral forms.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- Japan Bica -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/日本比卡.jpg" alt="Bicalutamide 80mg (Japan)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Japan Bica</div>
+          <div class="card-ingredient">Bicalutamide</div>
+          <div class="badges">
+            <span class="badge badge-dose">80mg / tablet</span>
+            <span class="badge badge-form">Oral</span>
+            <span class="badge badge-origin">Made in Japan</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 100 tablets, 80mg each.<br>
+            <strong>Recommended dose:</strong> 25–50mg/day; tablets can be split in half.<br>
+            Bicalutamide is a pure androgen receptor antagonist. It does not suppress testosterone production, but blocks androgen action at the receptor level. Suitable for combination with estrogen or monotherapy initiation. Japanese quality is reliable with good value in large packs.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- NZ Bica -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/新比卡.jpg" alt="Bicalutamide 50mg (New Zealand)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">NZ Bica</div>
+          <div class="card-ingredient">Bicalutamide</div>
+          <div class="badges">
+            <span class="badge badge-dose">50mg / tablet</span>
+            <span class="badge badge-form">Oral</span>
+            <span class="badge badge-origin">Made in New Zealand</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 28 tablets, 50mg each.<br>
+            <strong>Recommended dose:</strong> 50mg/day, one tablet once daily.<br>
+            New Zealand origin bicalutamide in standard 50mg strength, precise dosing without splitting. Suitable for stable-phase users with a fixed dose plan.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+    </div><!-- /product-grid -->
+  </details>
+
+
+  <!-- ═══════════════════════ ESTROGENS ═══════════════════════ -->
+  <details class="category cat-estro" open>
+    <summary>
+      <div class="cat-icon">🌸</div>
+      <div class="cat-meta">
+        Estrogen Medications
+        <span>Estrogens · 8 products</span>
+      </div>
+      <span class="chevron">▾</span>
+    </summary>
+
+    <div class="product-grid">
+
+      <!-- Benzo Estradiol -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/苯雌.jpg" alt="Estradiol Benzoate Injection 5mg (Thailand)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Benzo Estradiol (Injection)</div>
+          <div class="card-ingredient">Estradiol Benzoate</div>
+          <div class="badges">
+            <span class="badge badge-dose">5mg / ampoule</span>
+            <span class="badge badge-form">Intramuscular injection</span>
+            <span class="badge badge-origin">Made in Thailand</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 10 ampoules, 1ml each, with 5mg estradiol benzoate per ampoule.<br>
+            <strong>Recommended frequency:</strong> one injection every 3–5 days.<br>
+            Estradiol benzoate is a short-acting injectable estrogen that bypasses first-pass liver metabolism, offers high bioavailability, and produces clear peak levels. Suitable for users who need precise estrogen level control. Produced by a licensed Thai manufacturer.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- New Gel -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/凝胶新.jpg" alt="Estradiol Gel (New, Thailand)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">New Gel (Estradiol Gel)</div>
+          <div class="card-ingredient">Estradiol Transdermal Gel</div>
+          <div class="badges">
+            <span class="badge badge-dose">48mg / box</span>
+            <span class="badge badge-form">Transdermal topical</span>
+            <span class="badge badge-origin">Made in Thailand</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 80g gel with 48mg estradiol (0.6mg/g), with dosing ruler included.<br>
+            <strong>Recommended dose:</strong> 1 ruler measure daily (2.5g), apply to inner thigh or inner arm.<br>
+            ⚠️ <strong>Do not apply to the chest.</strong><br>
+            Transdermal delivery bypasses the liver, allowing estradiol to enter circulation directly. It is liver-friendly and provides steadier hormone levels. Suitable for users who prefer not to inject.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- Nuo -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/诺.jpg" alt="Estradiol 2mg (Thailand)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Nuo (Estradiol Tablets)</div>
+          <div class="card-ingredient">Estradiol</div>
+          <div class="badges">
+            <span class="badge badge-dose">2mg / tablet</span>
+            <span class="badge badge-form">Oral</span>
+            <span class="badge badge-origin">Made in Thailand</span>
+          </div>
+          <p class="card-desc">
+            1 box includes 1 blister with 28 tablets, 2mg each.<br>
+            <strong>Recommended dose:</strong> 2–6mg/day, depending on individual needs.<br>
+            Natural estradiol tablets with active ingredients identical to endogenous estrogen. Metabolized into estrone and estriol. Convenient oral use and one of the most common HRT estrogen forms.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- Japan Patch -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/日本贴片.jpg" alt="Estradiol Patch 0.72mg (Japan)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Japan Patch</div>
+          <div class="card-ingredient">Estradiol Transdermal Patch</div>
+          <div class="badges">
+            <span class="badge badge-dose">0.72mg / patch</span>
+            <span class="badge badge-form">Transdermal patch</span>
+            <span class="badge badge-origin">Made in Japan</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 70 patches, each with 0.72mg estradiol.<br>
+            <strong>Recommended use:</strong> replace one patch every two days, apply to lower abdomen or buttocks.<br>
+            Imported Japanese patch with mature sustained-release technology. Estrogen is released steadily for 48 hours with minimal blood-level fluctuation, making it one of the most stable transdermal options.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- Japan Estradiol -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/日雌.jpg" alt="Estradiol Valerate Injection 10mg (Japan)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Japan Estradiol (Valerate Injection)</div>
+          <div class="card-ingredient">Estradiol Valerate Injection</div>
+          <div class="badges">
+            <span class="badge badge-dose">10mg / ampoule</span>
+            <span class="badge badge-form">Intramuscular injection</span>
+            <span class="badge badge-origin">Made in Japan</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 10 ampoules, 1ml each, with 10mg estradiol valerate per ampoule.<br>
+            <strong>Recommended frequency:</strong> one injection every 1–2 weeks.<br>
+            Estradiol valerate is hydrolyzed in the body to release estradiol; it is a long-acting esterified estrogen. After intramuscular injection it is absorbed gradually with moderate peak-trough differences, making it a classic injectable estrogen option. Japanese quality is dependable.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- Thai Valerate -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/泰补.jpg" alt="Estradiol Valerate 2mg (Thailand)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Thai Valerate</div>
+          <div class="card-ingredient">Estradiol Valerate</div>
+          <div class="badges">
+            <span class="badge badge-dose">2mg / tablet</span>
+            <span class="badge badge-form">Oral</span>
+            <span class="badge badge-origin">Made in Thailand</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 3 blisters, 28 tablets each (84 tablets total), 2mg per tablet.<br>
+            <strong>Recommended dose:</strong> 2–6mg/day, depending on individual needs.<br>
+            Oral estradiol valerate is hydrolyzed into estradiol in the body. It is one of the most common oral estrogens. Thai-made, affordable, and available in large packs for long-term use.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- NZ Valerate -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/新补.jpg" alt="Estradiol Valerate 2mg (New Zealand)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">NZ Valerate</div>
+          <div class="card-ingredient">Estradiol Valerate</div>
+          <div class="badges">
+            <span class="badge badge-dose">2mg / tablet</span>
+            <span class="badge badge-form">Oral</span>
+            <span class="badge badge-origin">Made in New Zealand</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 3 blisters, 28 tablets each (84 tablets total), 2mg per tablet.<br>
+            <strong>Recommended dose:</strong> 2–6mg/day, depending on individual needs.<br>
+            New Zealand import version of estradiol valerate, with the same ingredients as Thai Valerate. Manufactured to high New Zealand pharmaceutical standards, suitable for users with stricter quality preferences.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- Yidimeng -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/伊迪蒙.jpg" alt="Premarin Conjugated Estrogens 0.625mg">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Yidimeng (Premarin)</div>
+          <div class="card-ingredient">Conjugated Estrogens</div>
+          <div class="badges">
+            <span class="badge badge-dose">0.625mg / tablet</span>
+            <span class="badge badge-form">Oral</span>
+          </div>
+          <p class="card-desc">
+            1 box contains 100 tablets, 0.625mg conjugated estrogens each.<br>
+            Conjugated estrogens (Premarin) are a mixture of multiple estrogen components. This is a more traditional HRT medication, suitable for oral-estrogen beginners as reference or users with specific needs. Due to its complex composition, monitoring should be more comprehensive than with single-ingredient estradiol products.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+    </div><!-- /product-grid -->
+  </details>
+
+
+  <!-- ═══════════════════════ OTHERS ═══════════════════════ -->
+  <details class="category cat-other">
+    <summary>
+      <div class="cat-icon">💊</div>
+      <div class="cat-meta">
+        Other Medications
+        <span>Others · 2 products</span>
+      </div>
+      <span class="chevron">▾</span>
+    </summary>
+
+    <div class="product-grid">
+
+      <!-- Dayvigo -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/dayvigo.jpg" alt="Dayvigo Lemborexant 5mg">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Dayvigo (Lemborexant)</div>
+          <div class="card-ingredient">Lemborexant</div>
+          <div class="badges">
+            <span class="badge badge-dose">5mg / tablet</span>
+            <span class="badge badge-form">Oral</span>
+            <span class="badge badge-special">Non-controlled · Sleep aid</span>
+          </div>
+          <p class="card-desc">
+            Specification: 5mg × 100 tablets.<br>
+            Dayvigo is a next-generation orexin receptor antagonist (OX1R / OX2R) that helps initiate and maintain sleep by blocking wake-promoting orexin pathways.<br>
+            Compared with traditional benzodiazepine sedatives, it <strong>does not disrupt normal sleep architecture</strong>, has very low dependence risk, and is a <strong>non-controlled medication</strong>. Suitable for users with sleep disturbances caused by hormone changes.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+      <!-- Testosterone -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="images/睾酮.jpg" alt="Testosterone Enanthate Injection 250mg (Germany)">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Testosterone (Enanthate Injection)</div>
+          <div class="card-ingredient">Testosterone Enanthate</div>
+          <div class="badges">
+            <span class="badge badge-dose">250mg / ampoule</span>
+            <span class="badge badge-form">Intramuscular injection</span>
+            <span class="badge badge-origin">Made in Germany</span>
+          </div>
+          <p class="card-desc">
+            1 box includes 1 ampoule, 1ml, containing 250mg testosterone enanthate.<br>
+            Testosterone enanthate is a long-acting esterified testosterone that releases gradually after intramuscular injection, usually once every 2–4 weeks. Mainly used for <strong>FTM (transgender male) androgen therapy</strong>. Original German import with reliable quality.
+          </p>
+        </div>
+        <div class="card-footer">
+          <a class="buy-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">💬 Contact to Buy</a>
+        </div>
+      </div>
+
+    </div><!-- /product-grid -->
+  </details>
+
+</main>
+
+<footer>
+  <p>Kanna Pharmacy · For informational reference only; please follow medical advice for specific medication use · <a href="https://t.me/Kanna_Pharmacy" target="_blank" style="color:var(--purple)">Contact support on Telegram</a></p>
+</footer>
+
+</body>
+</html>
