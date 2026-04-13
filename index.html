@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HRT Product Catalog — Nestor Empire Limited</title>
+  <title>HRT Product Catalog — Kanna Pharmacy</title>
   <style>
     :root {
       --purple:     #7C5CBF;
@@ -106,11 +106,10 @@
     /* ── Flow grid ── */
     .flow-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 16px;
       margin-top: 16px;
     }
-    @media (max-width: 580px) { .flow-grid { grid-template-columns: 1fr; } }
     .flow-card {
       background: var(--purple-bg);
       border-radius: 10px;
@@ -151,12 +150,18 @@
 
     .notice {
       margin-top: 12px;
-      padding: 10px 14px;
-      background: #FFF8EC;
-      border-left: 3px solid #F0A500;
-      border-radius: 6px;
-      font-size: .83rem;
+      padding: 14px 16px;
+      background: linear-gradient(180deg, #FFF8EC 0%, #FFFDF7 100%);
+      border-left: 4px solid #F0A500;
+      border-radius: 8px;
+      font-size: .84rem;
+      line-height: 1.65;
       color: #5A4200;
+    }
+    .notice strong:first-child {
+      display: inline-block;
+      font-size: .9rem;
+      margin-bottom: 2px;
     }
 
     /* ── Category sections ── */
@@ -336,15 +341,15 @@
 <!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
 <header class="site-header">
   <h1>🌸 HRT Product Catalog</h1>
-  <p>Nestor Empire Limited · Professional HRT Medications · Worldwide Shipping</p>
+  <p>Kanna Pharmacy · Professional HRT Medications · Worldwide Shipping</p>
   <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px;">
-    <a class="telegram-btn" href="https://t.me/Kanna_Pharmacy" target="_blank">
+    <a class="telegram-btn" href="mailto:falcon@nestorhk.com">
       <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
-      Contact Support / Purchase Inquiry
+      Contact Support / Purchase Inquiry · @Kanna_Pharmacy
     </a>
-       <a class="telegram-btn" href="mailto:falcon@nestorhk.com">
+    <a class="telegram-btn" href="https://t.me/proluton" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
-      📢 send a mail
+      📢 Announcement Channel
     </a>
   </div>
 </header>
@@ -357,25 +362,14 @@
     <div class="accordion-body">
       <div class="flow-grid">
         <div class="flow-card">
-          <h4>🇨🇳 Domestic Ordering Process</h4>
+          <h4>Order Process:</h4>
           <ol>
-            <li>Contact Telegram support</li>
-            <li>Tell us the medicines and quantities you need</li>
-            <li>Confirm pricing and payment method</li>
-            <li>Pay (USDT or Alipay)</li>
-            <li>Provide your shipping address</li>
-            <li>Wait for dispatch and track shipping</li>
-          </ol>
-        </div>
-        <div class="flow-card">
-          <h4>🌏 International Ordering Process</h4>
-          <ol>
-            <li>Contact Telegram support</li>
-            <li>Confirm destination country and medicines</li>
-            <li>Receive a quote (including shipping)</li>
-            <li>Pay (USDT or Alipay)</li>
-            <li>Provide your shipping address</li>
-            <li>Shipped by air cargo, track logistics</li>
+            <li>Contact our support team via Telegram or email</li>
+            <li>Confirm destination address and product requirements</li>
+            <li>Receive a proforma invoice for your order</li>
+            <li>Complete payment via T/T (bank transfer) or USDT</li>
+            <li>Order is shipped, and tracking information will be provided</li>
+            <li>Receive your shipment</li>
           </ol>
         </div>
       </div>
@@ -387,22 +381,25 @@
         <tbody>
           <tr><td>China domestic forwarding warehouse</td><td>¥10</td></tr>
           <tr><td>Macau / Taiwan</td><td>¥75</td></tr>
-          <tr><td>Malaysia / Singapore</td><td>¥100</td></tr>
+          <tr><td>Thailand / Indonesia / Vietnam</td><td>¥180</td></tr>
+          <tr><td>Malaysia / Singapore</td><td>¥220</td></tr>
           <tr><td>South Korea / Japan</td><td>¥180</td></tr>
           <tr><td>Most European countries</td><td>¥240</td></tr>
-          <tr><td>United States / Canada / Australia</td><td>¥280</td></tr>
-          <tr><td>Other countries</td><td>Contact support for a quote</td></tr>
+          <tr><td>United States / Canada / Australia / New Zealand (FCA)</td><td>¥280</td></tr>
+          <tr><td>Other countries</td><td>Please contact support for a quotation</td></tr>
         </tbody>
       </table>
 
       <div class="notice">
-        ⚠️ Shipping cost depends on actual weight and parcel contents; prices above are estimates only.<br>
-        Payment methods: <strong>USDT or Alipay</strong>. All parcels are shipped under FCA (Free Carrier) terms; responsibility ends once handed to the carrier.
+        <strong>Notes &amp; Terms:</strong><br><br>
+        Shipping costs are estimates and may vary depending on actual weight and contents.<br><br>
+        Payment is accepted via <strong>USDT or T/T (bank transfer)</strong>.<br><br>
+        We can assist with customs clearance for most destinations. Shipments to the United States, Canada, Australia, and New Zealand are handled under FCA terms, with responsibility transferring to the buyer once goods are handed over to the carrier.
       </div>
     </div>
   </details>
 
-  <!-- ═══════════════════════ ANTIANDROGENS ═══════════════════════ -->
+  <!-- ═══════════════════════ Antiandrogen Medications ═══════════════════════ -->
   <details class="category cat-anti" open>
     <summary>
       <div class="cat-icon">🛡️</div>
@@ -418,7 +415,7 @@
       <!-- 100 Tan Box -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="images/100土色.jpg" alt="Cyproterone Acetate 100mg (Tan Box)">
+          <img src="images/100 Tan Box.jpg" alt="Cyproterone Acetate 100mg (Tan Box)">
         </div>
         <div class="card-body">
           <div class="card-name">100 Tan Box</div>
@@ -442,7 +439,7 @@
       <!-- 100 NZ Box -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="images/100新色.jpg" alt="Cyproterone Acetate 100mg (New Zealand)">
+          <img src="images/100 NZ Box.jpg" alt="Cyproterone Acetate 100mg (New Zealand)">
         </div>
         <div class="card-body">
           <div class="card-name">100 NZ Box</div>
@@ -466,7 +463,7 @@
       <!-- Tan Box -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="images/土色.jpg" alt="Cyproterone Acetate 100mg (Tan)">
+          <img src="images/Tan Box.jpg" alt="Cyproterone Acetate 100mg (Tan)">
         </div>
         <div class="card-body">
           <div class="card-name">Tan Box</div>
@@ -538,7 +535,7 @@
       <!-- Japan Bica -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="images/日本比卡.jpg" alt="Bicalutamide 80mg (Japan)">
+          <img src="images/Japan Bica.jpg" alt="Bicalutamide 80mg (Japan)">
         </div>
         <div class="card-body">
           <div class="card-name">Japan Bica</div>
@@ -562,7 +559,7 @@
       <!-- NZ Bica -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="images/新比卡.jpg" alt="Bicalutamide 50mg (New Zealand)">
+          <img src="images/NZ Bica.jpg" alt="Bicalutamide 50mg (New Zealand)">
         </div>
         <div class="card-body">
           <div class="card-name">NZ Bica</div>
@@ -587,7 +584,7 @@
   </details>
 
 
-  <!-- ═══════════════════════ ESTROGENS ═══════════════════════ -->
+  <!-- ═══════════════════════ Estrogen Medications ═══════════════════════ -->
   <details class="category cat-estro" open>
     <summary>
       <div class="cat-icon">🌸</div>
@@ -676,13 +673,13 @@
       <!-- Japan Patch -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="images/日本贴片.jpg" alt="Estradiol Patch 0.72mg (Japan)">
+          <img src="images/Japan Patch.jpg" alt="Estradiol Patch 0.72mg (Japan)">
         </div>
         <div class="card-body">
           <div class="card-name">Japan Patch</div>
           <div class="card-ingredient">Estradiol Transdermal Patch</div>
           <div class="badges">
-            <span class="badge badge-dose">0.72mg / patch</span>
+            <span class="badge badge-dose">0.72mg / tablet</span>
             <span class="badge badge-form">Transdermal patch</span>
             <span class="badge badge-origin">Made in Japan</span>
           </div>
@@ -724,7 +721,7 @@
       <!-- Thai Valerate -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="images/泰补.jpg" alt="Estradiol Valerate 2mg (Thailand)">
+          <img src="images/Thai Valerate.jpg" alt="Estradiol Valerate 2mg (Thailand)">
         </div>
         <div class="card-body">
           <div class="card-name">Thai Valerate</div>
@@ -748,7 +745,7 @@
       <!-- NZ Valerate -->
       <div class="card">
         <div class="card-img-wrap">
-          <img src="images/新补.jpg" alt="Estradiol Valerate 2mg (New Zealand)">
+          <img src="images/NZ Valerate.jpg" alt="Estradiol Valerate 2mg (New Zealand)">
         </div>
         <div class="card-body">
           <div class="card-name">NZ Valerate</div>
